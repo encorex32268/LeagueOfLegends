@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -36,8 +37,12 @@ import com.lihan.leagueoflegends.core.domain.util.ObserveAsEvents
 import com.lihan.leagueoflegends.core.presentation.CachedImage
 import com.lihan.leagueoflegends.core.presentation.LoadingScreen
 import com.lihan.leagueoflegends.core.presentation.util.UiEvent
+import com.lihan.leagueoflegends.feature.champion.domain.model.ChampionDetail
+import com.lihan.leagueoflegends.feature.champion.domain.model.Language
+import com.lihan.leagueoflegends.feature.champion.domain.model.Spell
 import com.lihan.leagueoflegends.feature.champion.presentation.detail.components.SkinZoomInOutImage
 import com.lihan.leagueoflegends.feature.champion.presentation.detail.components.SpellItem
+import com.lihan.leagueoflegends.ui.theme.LeagueOfLegendsTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -185,60 +190,60 @@ fun ChampionDetailScreen(
 
 
 }
-//
-//@Composable
-//@Preview(showSystemUi = true)
-//fun ChampionDetailScreenPreview(){
-//    val championUIPreview = ChampionInfoUi(
-//        id = "Zac",
-//        name = "Zac",
-//        title = "the Secret Weapon",
-//        icon = "",
-//        skins = listOf(
-//
-//        ),
-//        spells = listOf(
-//            SpellUi(
-//                id = "ZacQ",
-//                name = "Stretching Strikes",
-//                description = "Zac stretches an arm, grabbing an enemy. Attacking a different enemy will cause him to throw both targets towards each other.",
-//                cooldownBurn = "14/12.5/11/9.5/8",
-//                image = ""
-//            ),
-//            SpellUi(
-//                id = "ZacW",
-//                name = "Unstable Matter",
-//                description = "Zac explodes outward towards nearby enemies, dealing a percentage of their maximum health as magic damage.",
-//                cooldownBurn = "5",
-//                image = ""
-//            ),
-//            SpellUi(
-//                id = "ZacE",
-//                name = "Elastic Slingshot",
-//                description = "Zac attaches his arms to the ground and stretches back, launching himself forward.",
-//                cooldownBurn = "22/19/16/13/10",
-//                image = ""
-//            ),
-//            Spell(
-//                id = "ZacR",
-//                name = "Let's Bounce!",
-//                description = "Zac bounces four times, knocking up enemies hit and slowing them.",
-//                cooldownBurn = "120/105/90",
-//                image = ""
-//            )
-//        )
-//    )
-//    LeagueOfLegendsTheme {
-//        Box(
-//            modifier = Modifier.fillMaxSize(),
-//            contentAlignment = Alignment.Center
-//        ){
-//            ChampionDetailScreen(
-//                state = ChampionDetailState(
-//                    championInfoUI = championUIPreview,
-//                    isLoading = false
-//                )
-//            )
-//        }
-//    }
-//}
+
+@Composable
+@Preview(showSystemUi = true)
+fun ChampionDetailScreenPreview(){
+    val championDetailPreview = ChampionDetail(
+        id = "Zac",
+        name = "Zac",
+        title = "the Secret Weapon",
+        icon = "",
+        skins = listOf(),
+        passive = null,
+        language = Language.US.code,
+        spells = listOf(
+            Spell(
+                name = "Stretching Strikes",
+                description = "Zac stretches an arm, grabbing an enemy. Attacking a different enemy will cause him to throw both targets towards each other.",
+                cooldownBurn = "14/12.5/11/9.5/8",
+                keyboardName = "Q",
+                imageUrl = ""
+            ),
+            Spell(
+                name = "Unstable Matter",
+                description = "Zac explodes outward towards nearby enemies, dealing a percentage of their maximum health as magic damage.",
+                cooldownBurn = "5",
+                keyboardName = "W",
+                imageUrl = ""
+            ),
+            Spell(
+                name = "Elastic Slingshot",
+                description = "Zac attaches his arms to the ground and stretches back, launching himself forward.",
+                cooldownBurn = "22/19/16/13/10",
+                keyboardName = "E",
+                imageUrl = ""
+            ),
+            Spell(
+                name = "Let's Bounce!",
+                description = "Zac bounces four times, knocking up enemies hit and slowing them.",
+                cooldownBurn = "120/105/90",
+                keyboardName = "R",
+                imageUrl = ""
+            )
+        )
+    )
+    LeagueOfLegendsTheme {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ){
+            ChampionDetailScreen(
+                state = ChampionDetailState(
+                    championDetail = championDetailPreview,
+                    isLoading = false
+                )
+            )
+        }
+    }
+}

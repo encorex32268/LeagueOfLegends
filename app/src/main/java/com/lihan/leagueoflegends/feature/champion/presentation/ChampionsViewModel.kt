@@ -51,7 +51,6 @@ class ChampionsViewModel(
     private fun dataLoading() {
         viewModelScope.launch {
             val version = async { versionRepository.getVersion() }.await()
-            Log.d("TAG", "dataLoading: ${version}")
             if (version is Result.Error) {
                 _uiEvent.send(
                     UiEvent.ErrorMessage(
