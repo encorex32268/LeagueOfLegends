@@ -18,11 +18,11 @@ This is my side project **League of Legends Champion App**, allowing users to qu
 
 <table>
   <tr>
-    <td><img src="https://github.com/encorex32268/LeagueOfLegendsApp/blob/master/screenshots/screenshot1.png" width="300"></td>
-    <td><img src="https://github.com/encorex32268/LeagueOfLegendsApp/blob/master/screenshots/screenshot2.png" width="300"></td>
-    <td><img src="https://github.com/encorex32268/LeagueOfLegendsApp/blob/master/screenshots/screenshot3.png" width="300"></td>
-    <td><img src="https://github.com/encorex32268/LeagueOfLegendsApp/blob/master/screenshots/screenshot4.png" width="300"></td>
-    <td><img src="https://github.com/encorex32268/LeagueOfLegendsApp/blob/master/screenshots/screenshot5.png" width="300"></td>
+    <td><img src="https://github.com/encorex32268/LeagueOfLegends/blob/master/screenshots/screenshot1.png" width="300"></td>
+    <td><img src="https://github.com/encorex32268/LeagueOfLegends/blob/master/screenshots/screenshot2.png" width="300"></td>
+    <td><img src="https://github.com/encorex32268/LeagueOfLegends/blob/master/screenshots/screenshot3.png" width="300"></td>
+    <td><img src="https://github.com/encorex32268/LeagueOfLegends/blob/master/screenshots/screenshot4.png" width="300"></td>
+    <td><img src="https://github.com/encorex32268/LeagueOfLegends/blob/master/screenshots/screenshot5.png" width="300"></td>
   </tr>
 </table>
 
