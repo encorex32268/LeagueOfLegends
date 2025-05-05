@@ -1,5 +1,6 @@
 package com.lihan.leagueoflegends.feature.champion.presentation.detail
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,6 +14,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import com.lihan.leagueoflegends.core.domain.util.Result
+import com.lihan.leagueoflegends.core.domain.util.onError
+import com.lihan.leagueoflegends.core.domain.util.onSuccess
 import kotlinx.coroutines.flow.update
 
 class ChampionDetailViewModel(
@@ -36,19 +39,12 @@ class ChampionDetailViewModel(
                 )
                 return@launch
             }
-            val localDB = repository.getDetailFromRoomDatabase(name)
-            if (localDB == null){
+            val detailOfLocal = repository.getDetailFromRoomDatabase(name)
+            if (detailOfLocal == null){
                 viewModelScope.launch {
-                    when(val result = repository.getDetail(name)){
-                        is Result.Error -> {
-                            _uiEvent.send(
-                                UiEvent.ErrorMessage(
-                                    message = result.error.toString()
-                                )
-                            )
-                        }
-                        is Result.Success -> {
-                            val resultData = result.data
+                    repository.getDetail(name)
+                        .onSuccess { data ->
+                            val resultData = data
                             _state.update {
                                 it.copy(
                                     championDetail = resultData,
@@ -61,12 +57,23 @@ class ChampionDetailViewModel(
                                 )
                             }
                         }
+                        .onError { error ->
+                            _state.update {
+                                it.copy(
+                                    isLoading = false
+                                )
+                            }
+                            _uiEvent.send(
+                                UiEvent.ErrorMessage(
+                                    message = error.toString()
+                                )
+                            )
+                        }
                     }
-                }
             }else{
                 _state.update {
                     it.copy(
-                        championDetail = localDB,
+                        championDetail = detailOfLocal,
                         isLoading = false
                     )
                 }

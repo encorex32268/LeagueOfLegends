@@ -6,12 +6,17 @@ import com.lihan.leagueoflegends.core.data.sharedpreferences.DefaultSharedPrefer
 import com.lihan.leagueoflegends.core.data.local.ChampionDao
 import com.lihan.leagueoflegends.core.data.local.ChampionDetailDao
 import com.lihan.leagueoflegends.core.data.local.ChampionRoomDatabase
+import com.lihan.leagueoflegends.core.data.remote.ChampionDetailRemoteDataSource
+import com.lihan.leagueoflegends.core.data.remote.ChampionDetailRemoteDataSourceImpl
+import com.lihan.leagueoflegends.core.data.remote.ChampionRemoteDataSource
+import com.lihan.leagueoflegends.core.data.remote.ChampionRemoteDataSourceImpl
 import com.lihan.leagueoflegends.core.domain.network.HttpClientFactory
 import com.lihan.leagueoflegends.core.domain.sharedpreferences.SharedPreferencesManager
 import com.lihan.leagueoflegends.core.data.repository.VersionRepositoryImpl
 import com.lihan.leagueoflegends.core.domain.repository.VersionRepository
 import io.ktor.client.HttpClient
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -48,4 +53,9 @@ val coreModule = module {
             sharedPreferencesManager = get()
         )
     }.bind<VersionRepository>()
+
+    singleOf(::ChampionRemoteDataSourceImpl).bind<ChampionRemoteDataSource>()
+    singleOf(::ChampionDetailRemoteDataSourceImpl).bind<ChampionDetailRemoteDataSource>()
+
+
 }

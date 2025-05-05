@@ -1,7 +1,7 @@
 package com.lihan.leagueoflegends.feature.champion.data.mapper
 
-import com.lihan.leagueoflegends.feature.champion.data.model.champion.ChampionDto
-import com.lihan.leagueoflegends.feature.champion.data.model.champion.ChampionsDto
+import com.lihan.leagueoflegends.core.data.remote.model.champion.ChampionDto
+import com.lihan.leagueoflegends.core.data.remote.model.champion.ChampionsDto
 import com.lihan.leagueoflegends.feature.champion.domain.model.Champion
 import com.lihan.leagueoflegends.feature.champion.domain.model.Champions
 

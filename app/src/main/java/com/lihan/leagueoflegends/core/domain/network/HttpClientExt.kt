@@ -12,15 +12,13 @@ import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.SerializationException
 
-const val BASE_URL = ""
-
 suspend inline fun <reified Response: Any> HttpClient.get(
     route: String,
     queryParameters: Map<String,Any?> = mapOf()
 ): Result<Response, DataError.Network> {
     return safeCall {
         get {
-            url(constructRoute(route))
+            url(route)
             queryParameters.forEach { (key,value) ->
                 parameter(key,value)
             }
@@ -61,13 +59,5 @@ suspend inline fun <reified T> responseToResult(response: HttpResponse): Result<
         429 -> { Result.Error(DataError.Network.TOO_MANY_REQUESTS)}
         in 500..599 -> { Result.Error(DataError.Network.SERVER_ERROR)}
         else -> Result.Error(DataError.Network.UNKNOWN)
-    }
-}
-
-fun constructRoute(route: String): String {
-    return when {
-        route.contains(BASE_URL) -> route
-        route.startsWith("/") -> BASE_URL + route
-        else -> "$BASE_URL/$route"
     }
 }

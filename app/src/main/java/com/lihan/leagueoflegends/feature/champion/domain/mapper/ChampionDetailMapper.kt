@@ -4,10 +4,6 @@ import com.lihan.leagueoflegends.core.data.local.entity.ChampionDetailEntity
 import com.lihan.leagueoflegends.core.data.local.entity.PassiveEntity
 import com.lihan.leagueoflegends.core.data.local.entity.SkinEntity
 import com.lihan.leagueoflegends.core.data.local.entity.SpellEntity
-import com.lihan.leagueoflegends.feature.champion.data.model.champion_detail.ChampionInfoDto
-import com.lihan.leagueoflegends.feature.champion.data.model.champion_detail.PassiveDto
-import com.lihan.leagueoflegends.feature.champion.data.model.champion_detail.SkinDto
-import com.lihan.leagueoflegends.feature.champion.data.model.champion_detail.SpellDto
 import com.lihan.leagueoflegends.feature.champion.domain.model.ChampionDetail
 import com.lihan.leagueoflegends.feature.champion.domain.model.Passive
 import com.lihan.leagueoflegends.feature.champion.domain.model.Skin

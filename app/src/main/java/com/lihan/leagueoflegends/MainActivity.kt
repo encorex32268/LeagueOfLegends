@@ -29,32 +29,29 @@ class MainActivity : ComponentActivity() {
             KoinContext {
                 LeagueOfLegendsTheme {
                     val navController = rememberNavController()
-                    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                        NavHost(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(innerPadding),
-                            navController = navController,
-                            startDestination = Routes.Champions
-                        ){
-                            composable<Routes.Champions>{
-                                ChampionsScreenRoot(
-                                    onChampionClickGoToDetail = {
-                                        navController.navigate(
-                                            Routes.ChampionDetail(it)
-                                        )
-                                    }
-                                )
-                            }
-                            composable<Routes.ChampionDetail>{
-                                ChampionDetailScreenRoot(
-                                    onBack = {
-                                        navController.navigateUp()
-                                    }
-                                )
-                            }
-
+                    NavHost(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        navController = navController,
+                        startDestination = Routes.Champions
+                    ){
+                        composable<Routes.Champions>{
+                            ChampionsScreenRoot(
+                                onChampionClickGoToDetail = {
+                                    navController.navigate(
+                                        Routes.ChampionDetail(it)
+                                    )
+                                }
+                            )
                         }
+                        composable<Routes.ChampionDetail>{
+                            ChampionDetailScreenRoot(
+                                onBack = {
+                                    navController.navigateUp()
+                                }
+                            )
+                        }
+
                     }
 
                 }

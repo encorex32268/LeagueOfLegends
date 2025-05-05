@@ -87,7 +87,9 @@ fun ChampionDetailScreen(
         LoadingScreen()
     }else{
         CachedImage(
-            modifier = Modifier.fillMaxSize().alpha(0.3f),
+            modifier = Modifier
+                .fillMaxSize()
+                .alpha(0.3f),
             key = state.championDetail?.name,
             imageUrl = state.championDetail?.skins?.get(0)?.imageUrl,
             contentScale = ContentScale.Crop
@@ -159,7 +161,7 @@ fun ChampionDetailScreen(
                     items(skinsUi){ skin ->
                         CachedImage(
                             onClick = {
-                                imageModel = skin
+                                imageModel = skin.imageUrl
                             },
                             imageUrl = skin.imageUrl,
                             loading = {

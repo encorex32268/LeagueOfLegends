@@ -45,6 +45,7 @@ fun TagsFilter(
     ){
         tags.forEach { tag ->
             FilterChip(
+                border = null,
                 shape = RoundedCornerShape(16.dp),
                 selected = selectedTag == tag,
                 onClick = {

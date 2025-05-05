@@ -1,10 +1,10 @@
 package com.lihan.leagueoflegends.feature.champion.data.mapper
 
 import android.util.Log
-import com.lihan.leagueoflegends.feature.champion.data.model.champion_detail.ChampionInfoDto
-import com.lihan.leagueoflegends.feature.champion.data.model.champion_detail.PassiveDto
-import com.lihan.leagueoflegends.feature.champion.data.model.champion_detail.SkinDto
-import com.lihan.leagueoflegends.feature.champion.data.model.champion_detail.SpellDto
+import com.lihan.leagueoflegends.core.data.remote.model.champion_detail.ChampionInfoDto
+import com.lihan.leagueoflegends.core.data.remote.model.champion_detail.PassiveDto
+import com.lihan.leagueoflegends.core.data.remote.model.champion_detail.SkinDto
+import com.lihan.leagueoflegends.core.data.remote.model.champion_detail.SpellDto
 import com.lihan.leagueoflegends.feature.champion.domain.model.ChampionDetail
 import com.lihan.leagueoflegends.feature.champion.domain.model.Passive
 import com.lihan.leagueoflegends.feature.champion.domain.model.Skin
@@ -14,7 +14,6 @@ fun ChampionInfoDto.toChampionDetail(
     language: String,
     version: String
 ): ChampionDetail {
-    Log.d("TAG", "toChampionDetail: ${version}")
     return ChampionDetail(
         id = id?:"",
         name = name?:"",
@@ -27,7 +26,9 @@ fun ChampionInfoDto.toChampionDetail(
             spellDto.toSpell(version = version,index)
         }?: emptyList(),
         language = language,
-        passive = passive?.toPassive(version = version)
+        passive = passive?.toPassive(
+            version = version
+        )
     )
 }
 

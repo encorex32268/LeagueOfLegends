@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -44,7 +45,7 @@ fun SkinZoomInOutImage(
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .background(Color.DarkGray.copy(alpha = 0.5f)),
+                .background(Color.DarkGray.copy(alpha = 0.3f)),
         ){
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -55,7 +56,8 @@ fun SkinZoomInOutImage(
                 ) {
                     Icon(
                         imageVector = Close,
-                        contentDescription = null
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.background
                     )
                 }
             }
@@ -70,8 +72,8 @@ fun SkinZoomInOutImage(
                 val transState = rememberTransformableState { zoomChange, panChange, rotationChange ->
                     scale = (scale * zoomChange).coerceIn(1f, 5f)
 
-                    val extraWidth = (scale - 1) * constraints.maxWidth
-                    val extraHeight = (scale - 1) * constraints.maxHeight
+                    val extraWidth = (scale - 1) * this.constraints.maxWidth
+                    val extraHeight = (scale - 1) * this.constraints.maxHeight
 
                     val maxX = extraWidth / 2
                     val maxY = extraHeight / 2
