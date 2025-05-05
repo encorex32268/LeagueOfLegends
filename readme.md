@@ -27,7 +27,7 @@ This is my side project **League of Legends Champion App**, allowing users to qu
 </table>
 
 ## Video
-[https://youtube.com/shorts/pnr2CKqG3ho](https://youtube.com/shorts/pnr2CKqG3ho)
+[https://www.youtube.com/shorts/sg9tSX80JXQ](https://www.youtube.com/shorts/sg9tSX80JXQ)
 
 💡 **If you like this project, don't forget to ⭐Star it!** 🚀
 
